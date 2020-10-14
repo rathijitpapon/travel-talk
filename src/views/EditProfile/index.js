@@ -2,7 +2,7 @@ import React from 'react';
 
 import LayoutWrapper from "../../layouts/LayoutWrapper";
 
-const MyPosts = () => {
+const EditProfile = () => {
     return ( 
         <LayoutWrapper>
             <h1>My Post View Page</h1>
@@ -10,4 +10,4 @@ const MyPosts = () => {
      );
 }
  
-export default MyPosts;
+export default EditProfile;

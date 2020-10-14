@@ -7,6 +7,8 @@ import AppIcon from "../../assets/logo/appIconSmall.png";
 const NavBar = () => {
   const { container, mainContainer, leftContainer, rightContainer, logoContainer, iconContainer, titleContainer, menuIconContainer, menuItemWrapper, menuItemContainer,  optionContainer, itemContainer } = style();
 
+  const isLoggedIn = false;
+
   const [mobileMenu, setMobileMenu] = useState(true);
 
   const onMenuClick = () => {
@@ -28,38 +30,52 @@ const NavBar = () => {
             {mobileMenu ? <i className="fas fa-bars fa-2x"></i> : <i className="fas fa-times fa-2x"></i>}
           </div>
           <div className={optionContainer}>
-            {/* <NavLink exact activeStyle={{color: "#bc8989"}} to="/myposts" className={itemContainer}>
-              My Posts
-            </NavLink>
-            <NavLink exact activeStyle={{color: "#bc8989"}} to="myprofile" className={itemContainer}>
-              Rathijit
-            </NavLink> */}
-            <NavLink exact activeStyle={{color: "#bc8989"}} to="/signup" className={itemContainer}>
-              Join
-            </NavLink>
-            <NavLink exact activeStyle={{color: "#bc8989"}} to="/signin" className={itemContainer}>
-              Sign In
-            </NavLink>
+            {isLoggedIn ? (<React.Fragment>
+                <NavLink exact activeStyle={{color: "#bc8989"}} to="/messages" className={itemContainer}>
+                  Messages
+                </NavLink>
+                <NavLink exact activeStyle={{color: "#bc8989"}} to="/notifications" className={itemContainer}>
+                  Notifications
+                </NavLink>
+                <NavLink exact activeStyle={{color: "#bc8989"}} to="/myprofile" className={itemContainer}>
+                  Rathijit
+                </NavLink>
+              </React.Fragment>) : null}
+
+              {!isLoggedIn ? (<React.Fragment>
+                  <NavLink style={{marginTop: "10%"}} exact activeStyle={{color: "#bc8989"}} to="/signup" className={itemContainer}>
+                    Join
+                  </NavLink>
+                  <NavLink style={{marginTop: "10%"}} exact activeStyle={{color: "#bc8989"}} to="/signin" className={itemContainer}>
+                    Sign In
+                  </NavLink>
+                </React.Fragment>) : null}
           </div>
         </div>
       </div>
       {mobileMenu ? null : (
         <div className={menuItemWrapper}>
-          <div className={menuItemContainer}>
-            <NavLink exact activeStyle={{color: "#bc8989"}} to="/myposts"  className={menuItemContainer}>My Posts</NavLink>
-          </div>
 
-          <div className={menuItemContainer}>
-            <NavLink exact activeStyle={{color: "#bc8989"}} to="myprofile"  className={menuItemContainer}>Rathijit</NavLink>
-          </div>
+          {isLoggedIn ? (<React.Fragment>
+            <div className={menuItemContainer}>
+              <NavLink exact activeStyle={{color: "#bc8989"}} to="/messages"  className={menuItemContainer}>Messages</NavLink>
+            </div>
+            <div className={menuItemContainer}>
+              <NavLink exact activeStyle={{color: "#bc8989"}} to="/notifications"  className={menuItemContainer}>Notifications</NavLink>
+            </div>
+            <div className={menuItemContainer}>
+              <NavLink exact activeStyle={{color: "#bc8989"}} to="myprofile"  className={menuItemContainer}>Rathijit</NavLink>
+            </div>
+          </React.Fragment>) : null}
 
-          <div className={menuItemContainer}>
-            <NavLink exact activeStyle={{color: "#bc8989"}} to="/signup"  className={menuItemContainer}>Join</NavLink>
-          </div>
-
-          <div className={menuItemContainer}>
-            <NavLink exact activeStyle={{color: "#bc8989"}} to="/signin"  className={menuItemContainer}>SignIn</NavLink>
-          </div>
+          {!isLoggedIn ? (<React.Fragment>
+            <div className={menuItemContainer}>
+              <NavLink exact activeStyle={{color: "#bc8989"}} to="/signup"  className={menuItemContainer}>Join</NavLink>
+            </div>
+            <div className={menuItemContainer}>
+              <NavLink exact activeStyle={{color: "#bc8989"}} to="/signin"  className={menuItemContainer}>SignIn</NavLink>
+            </div>
+          </React.Fragment>) : null}
         </div>
       )}
     </div>

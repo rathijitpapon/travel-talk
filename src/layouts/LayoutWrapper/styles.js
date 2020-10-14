@@ -12,7 +12,7 @@ const style = makeStyles((theme) => ({
     },
     
     content: {
-        marginTop: "80px",
+        marginTop: "100px",
         marginBottom: "50px"
     },
 }));

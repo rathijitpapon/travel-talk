@@ -15,11 +15,13 @@ const style = makeStyles((theme) => ({
       },
 
       leftContainer: {
-        display: "flex-start",
+        display: "flex",
+        justifyContent: "flex-start",
       },
 
       rightContainer: {
-        display: "flex-end",
+        display: "flex",
+        justifyContent: "flex-start",
       },
 
       logoContainer: {
@@ -50,12 +52,15 @@ const style = makeStyles((theme) => ({
         fontWeight: "bold",
         color: "#EBE4E0",
         marginTop: "6%",
-        marginBottom: "6%",
 
         [theme.breakpoints.down(450)] : {
-            fontSize: "25px",
-            marginTop: "10%",
-            marginBottom: "10%",
+          fontSize: "35px",
+            marginTop: "11%",
+        },
+
+        [theme.breakpoints.down(400)] : {
+          fontSize: "25px",
+          marginTop: "18%",
         },
       },
 
@@ -119,8 +124,8 @@ const style = makeStyles((theme) => ({
         color: "#EBE4E0",
         cursor: "pointer",
         textDecoration: "none",
-        marginTop: "10%",
-        marginBottom: "10%",
+        marginTop: "6%",
+        marginBottom: "6%",
         marginLeft: "30px",
 
         '&:hover': {

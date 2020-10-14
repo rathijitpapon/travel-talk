@@ -16,3 +16,8 @@ code {
   font-family: 'Ubuntu Mono';
   src: local('Ubuntu Mono'), url(./assets/font/Ubuntu_Mono/UbuntuMono-Regular.ttf) format('truetype');
 }
+
+@font-face {
+  font-family: 'Lato';
+  src: local('Lato'), url(./assets/font/Lato/Lato-Regular.ttf) format('truetype');
+}

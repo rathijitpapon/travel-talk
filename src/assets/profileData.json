@@ -1,0 +1,73 @@
+{
+    "_id": "12345667890",
+    "fullName": "Rathijit Paul",
+    "username": "rathijit",
+    "email": "alienpapon009@gmail.com",
+    "password": "123456",
+    "profileImage": "https://bityl.co/3vAx",
+    "description": "I'm a traveller and a software developer. I love to travel mostly in hill areas and also in historical areas. Besides travelling and developing softwares, I love to taste different kinds of foods of different cultures and countries.",
+    "followers": [
+        {
+            "ownerId": "01234567890",
+            "fullName": "Rathijit Paul"
+        },
+        {
+            "ownerId": "11234567890",
+            "fullName": "Rathijit Paul"
+        },
+        {
+            "ownerId": "21234567890",
+            "fullName": "Rathijit Paul"
+        },
+        {
+            "ownerId": "31234567890",
+            "fullName": "Rathijit Paul"
+        },
+        {
+            "ownerId": "41234567890",
+            "fullName": "Rathijit Paul"
+        }
+    ],
+    "following": [
+        {
+            "ownerId": "01234567890",
+            "fullName": "Rathijit Paul"
+        },
+        {
+            "ownerId": "11234567890",
+            "fullName": "Rathijit Paul"
+        },
+        {
+            "ownerId": "21234567890",
+            "fullName": "Rathijit Paul"
+        },
+        {
+            "ownerId": "31234567890",
+            "fullName": "Rathijit Paul"
+        },
+        {
+            "ownerId": "41234567890",
+            "fullName": "Rathijit Paul"
+        }
+    ],
+    "posts": [{
+        "_id": "1234567890",
+        "ownerId": "01234567890",
+        "title": "Himachal e Hattogol",
+        "description": "This was an impressive tour in my life. First time I went outside of my country for tour. It was about 2 weeks journey. I travelled with my 15 other friends. We explored Shimla, Manali, Kasol, Delhi, Agra & Kolkata.",
+        "photo": "https://bityl.co/3vD4",
+        "comments": [{
+            "owner": "01234567890",
+            "comment": "Quite Impressive"
+        }],
+        "loveReact": [{
+            "ownerId": "01234567890"
+        }],
+        "likeReact": [{
+            "ownerId": "01234567890"
+        }],
+        "dislikeReact": [{
+            "ownerId": "01234567890"
+        }]
+    }]
+}

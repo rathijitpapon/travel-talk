@@ -102,6 +102,7 @@ const style = makeStyles((theme) => ({
 
     '&:hover': {
       opacity: "0.4",
+      textDecoration: "underline",
     },
   },
 
