@@ -41,7 +41,7 @@ const style = makeStyles((theme) => ({
         marginTop: "1%",
         marginBottom: "1%",
         
-        [theme.breakpoints.down(400)] : {
+        [theme.breakpoints.down(430)] : {
             display: "none",
         },
       },
@@ -54,11 +54,11 @@ const style = makeStyles((theme) => ({
         marginTop: "6%",
 
         [theme.breakpoints.down(450)] : {
-          fontSize: "35px",
-            marginTop: "11%",
+            fontSize: "35px",
+            marginTop: "8%",
         },
 
-        [theme.breakpoints.down(400)] : {
+        [theme.breakpoints.down(430)] : {
           fontSize: "25px",
           marginTop: "18%",
         },
