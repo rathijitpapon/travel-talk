@@ -228,6 +228,8 @@ const style = makeStyles((theme) => ({
   popupContainer: {
     display: "flex",
     flexDirection: "column",
+    overflowY: "auto",
+    maxHeight: "calc(100vh - 210px)",
   },
 
   popupItemContainer: {

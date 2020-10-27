@@ -10,10 +10,10 @@
     "@testing-library/user-event": "^7.2.1",
     "joi-browser": "^13.4.0",
     "prop-type": "0.0.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3",
+    "react-scripts": "^4.0.0",
     "react-toastify": "^6.0.9",
     "reactjs-popup": "^2.0.4"
   },

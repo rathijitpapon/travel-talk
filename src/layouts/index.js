@@ -8,6 +8,7 @@ import SignIn from "../views/SignIn";
 import SignUp from "../views/SignUp";
 import EditProfile from "../views/EditProfile";
 import Landing from "../views/Landing";
+import Home from "../views/Home";
 import NotFound from "../views/NotFound";
 
 const MainLayout = () => {
@@ -20,7 +21,8 @@ const MainLayout = () => {
         <Route exact path="/signin" component={SignIn} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/editprofile" component={EditProfile} />
-        <Route exact path="/" component={Landing} />
+        <Route exact path="/landing" component={Landing} />
+        <Route exact path="/" component={Home} />
         <Route to="*" component={NotFound} />
       </Switch>
     </div>
