@@ -50,24 +50,66 @@
             "fullName": "Rathijit Paul"
         }
     ],
-    "posts": [{
-        "_id": "1234567890",
-        "ownerId": "01234567890",
-        "title": "Himachal e Hattogol",
-        "description": "This was an impressive tour in my life. First time I went outside of my country for tour. It was about 2 weeks journey. I travelled with my 15 other friends. We explored Shimla, Manali, Kasol, Delhi, Agra & Kolkata.",
-        "photo": "https://bityl.co/3vD4",
-        "comments": [{
-            "owner": "01234567890",
-            "comment": "Quite Impressive"
-        }],
-        "loveReact": [{
-            "ownerId": "01234567890"
-        }],
-        "likeReact": [{
-            "ownerId": "01234567890"
-        }],
-        "dislikeReact": [{
-            "ownerId": "01234567890"
-        }]
-    }]
+    "posts": [
+        {
+            "_id": "1234567890",
+            "ownerId": "01234567890",
+            "title": "Himachal e Hattogol",
+            "description": "This was an impressive tour in my life. First time I went outside of my country for tour. It was about 2 weeks journey. I travelled with my 15 other friends. We explored Shimla, Manali, Kasol, Delhi, Agra & Kolkata.",
+            "photo": "https://bityl.co/3vD4",
+            "comments": [{
+                "owner": "01234567890",
+                "comment": "Quite Impressive"
+            }],
+            "loveReact": [{
+                "ownerId": "01234567890"
+            }],
+            "likeReact": [{
+                "ownerId": "01234567890"
+            }],
+            "dislikeReact": [{
+                "ownerId": "01234567890"
+            }]
+        },
+        {
+            "_id": "1234567891",
+            "ownerId": "01234567890",
+            "title": "Himachal e Hattogol",
+            "description": "This was an impressive tour in my life. First time I went outside of my country for tour. It was about 2 weeks journey. I travelled with my 15 other friends. We explored Shimla, Manali, Kasol, Delhi, Agra & Kolkata.",
+            "photo": "https://bityl.co/3vD4",
+            "comments": [{
+                "owner": "01234567890",
+                "comment": "Quite Impressive"
+            }],
+            "loveReact": [{
+                "ownerId": "01234567890"
+            }],
+            "likeReact": [{
+                "ownerId": "01234567890"
+            }],
+            "dislikeReact": [{
+                "ownerId": "01234567890"
+            }]
+        },
+        {
+            "_id": "1234567892",
+            "ownerId": "01234567890",
+            "title": "Himachal e Hattogol",
+            "description": "This was an impressive tour in my life. First time I went outside of my country for tour. It was about 2 weeks journey. I travelled with my 15 other friends. We explored Shimla, Manali, Kasol, Delhi, Agra & Kolkata.",
+            "photo": "https://bityl.co/3vD4",
+            "comments": [{
+                "owner": "01234567890",
+                "comment": "Quite Impressive"
+            }],
+            "loveReact": [{
+                "ownerId": "01234567890"
+            }],
+            "likeReact": [{
+                "ownerId": "01234567890"
+            }],
+            "dislikeReact": [{
+                "ownerId": "01234567890"
+            }]
+        }
+    ]
 }
