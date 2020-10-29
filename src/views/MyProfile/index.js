@@ -12,7 +12,7 @@ import style from "./styles";
 const profileData = require("../../assets/profileData.json");
 
 const MyProfile = () => {
-    const { mainContainer, profileContainer, profileImageContainer, profileDescriptionContainer, nameContainer, descriptionContainer, followContainer, followerContainer, followingContainer, buttonContainer, followButtonContainer, messageButtonContainer, editPostContainer, profileBottomContainer, bottomButtonContainer, popupContainer, popupItemContainer } = style();
+    const { mainContainer, profileContainer, profileImageContainer, profileDescriptionContainer, nameContainer, descriptionContainer, followContainer, followerContainer, followingContainer, buttonContainer, followButtonContainer, messageButtonContainer, editPostContainer, profileBottomContainer, bottomButtonContainer, photosContainer, photosItemContainer, popupContainer, popupItemContainer, popupProfileIconContainer, popupProfileNameContainer } = style();
 
     const [showOption, setShowOption] = useState("posts");
 
@@ -59,7 +59,17 @@ const MyProfile = () => {
                             >
                                 <div className={popupContainer}>
                                     {profileData.followers.map(follower => (
-                                        <NavLink to="/myprofile" className={popupItemContainer} key={follower.ownerId}>{follower.fullName}</NavLink>
+                                        <div key={follower.ownerId} className={popupItemContainer}>
+
+                                            <NavLink exact to="/myprofile">
+                                                <img src={profileData.profileImage} alt="Profile" className={popupProfileIconContainer}/>
+                                            </NavLink>
+
+                                            <NavLink to="/myprofile" className={popupProfileNameContainer}>
+                                                {follower.fullName}
+                                            </NavLink>
+
+                                        </div>
                                     ))}
                                 </div>
                             </Popup>
@@ -70,7 +80,17 @@ const MyProfile = () => {
                             >
                                 <div className={popupContainer}>
                                     {profileData.following.map(following => (
-                                        <NavLink to="/myprofile" className={popupItemContainer} key={following.ownerId}>{following.fullName}</NavLink>
+                                        <div key={following.ownerId} className={popupItemContainer}>
+
+                                            <NavLink exact to="/myprofile">
+                                                <img src={profileData.profileImage} alt="Profile" className={popupProfileIconContainer}/>
+                                            </NavLink>
+
+                                            <NavLink to="/myprofile" className={popupProfileNameContainer}>
+                                                {following.fullName}
+                                            </NavLink>
+
+                                        </div>
                                     ))}
                                 </div>
                             </Popup>
@@ -95,6 +115,7 @@ const MyProfile = () => {
                     <button style={postsOptionColor}  className={bottomButtonContainer} onClick={onClickPosts}>Posts</button>
                     <button style={photosOptionColor} className={bottomButtonContainer} onClick={onClickPhotos}>Photos</button>
                 </div>
+
                 {showOption === "posts"? (
                     <div>
                         {profileData.posts.map((post) => (
@@ -105,6 +126,14 @@ const MyProfile = () => {
                         ))}
                     </div>
                     
+                ) : null}
+
+                {showOption === "photos"? (
+                    <div className={photosContainer}>
+                        {profileData.posts.map((post) => (
+                            <img key={post._id} src={post.photo} alt="" className={photosItemContainer}/>
+                        ))}
+                    </div>
                 ) : null}
             </div>
         </LayoutWrapper>

@@ -140,6 +140,7 @@ const Post = (props) => {
                 setTitle(fetchedPostData.title);
                 setDescription(fetchedPostData.description);
                 setImage(fetchedPostData.image);
+                setExpand(true);
             }
         };
 

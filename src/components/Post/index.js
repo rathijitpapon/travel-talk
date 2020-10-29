@@ -5,7 +5,7 @@ import {NavLink} from "react-router-dom";
 import style from "./styles";
 
 const Post = (props) => {
-    const {mainContainer, titleContainer, profileContainer, profileNameContainer, profileImageContainer, postImageContainer, postDescriptionContainer, reactContainer, reactItemContainer, reactCountContainer, reactIconContainer, popupContainer, popupItemContainer} = style();
+    const {mainContainer, titleContainer, profileContainer, profileNameContainer, profileImageContainer, postImageContainer, postDescriptionContainer, reactContainer, reactItemContainer, reactCountContainer, reactIconContainer, popupContainer, popupItemContainer, popupProfileIconContainer, popupProfileNameContainer} = style();
 
     const [postData, setPostData] = useState({});
 
@@ -143,8 +143,18 @@ const Post = (props) => {
                         modal
                     >
                         <div className={popupContainer}>
-                            {postData.loveReact ? postData.loveReact.map(react => (
-                                <NavLink to="/myprofile" className={popupItemContainer} key={react._id}>{react.fullName}</NavLink>
+                        {postData.loveReact ? postData.loveReact.map(react => (
+                                <div key={react._id} className={popupItemContainer}>
+
+                                    <NavLink exact to="/myprofile">
+                                        <img src={postData.profileImage} alt="Profile" className={popupProfileIconContainer}/>
+                                    </NavLink>
+
+                                    <NavLink to="/myprofile" className={popupProfileNameContainer}>
+                                        {react.fullName}
+                                    </NavLink>
+
+                                </div>
                             )) : null}
                         </div>
                     </Popup>
@@ -159,8 +169,18 @@ const Post = (props) => {
                         modal
                     >
                         <div className={popupContainer}>
-                            {postData.likeReact ? postData.likeReact.map(react => (
-                                <NavLink to="/myprofile" className={popupItemContainer} key={react._id}>{react.fullName}</NavLink>
+                        {postData.likeReact ? postData.likeReact.map(react => (
+                                <div key={react._id} className={popupItemContainer}>
+
+                                    <NavLink exact to="/myprofile">
+                                        <img src={postData.profileImage} alt="Profile" className={popupProfileIconContainer}/>
+                                    </NavLink>
+
+                                    <NavLink to="/myprofile" className={popupProfileNameContainer}>
+                                        {react.fullName}
+                                    </NavLink>
+
+                                </div>
                             )) : null}
                         </div>
                     </Popup>
@@ -176,7 +196,17 @@ const Post = (props) => {
                     >
                         <div className={popupContainer}>
                             {postData.disLikeReact ? postData.disLikeReact.map(react => (
-                                <NavLink to="/myprofile" className={popupItemContainer} key={react._id}>{react.fullName}</NavLink>
+                                <div key={react._id} className={popupItemContainer}>
+
+                                    <NavLink exact to="/myprofile">
+                                        <img src={postData.profileImage} alt="Profile" className={popupProfileIconContainer}/>
+                                    </NavLink>
+
+                                    <NavLink to="/myprofile" className={popupProfileNameContainer}>
+                                        {react.fullName}
+                                    </NavLink>
+
+                                </div>
                             )) : null}
                         </div>
                     </Popup>
