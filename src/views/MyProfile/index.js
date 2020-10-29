@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import Popup from 'reactjs-popup';
 import {NavLink} from "react-router-dom";
 
+import Post  from '../../components/Post';
+import  EditPost from '../../components/EditPost';
+
 import LayoutWrapper from "../../layouts/LayoutWrapper";
 
 import style from "./styles";
@@ -9,7 +12,7 @@ import style from "./styles";
 const profileData = require("../../assets/profileData.json");
 
 const MyProfile = () => {
-    const { mainContainer, profileContainer, profileImageContainer, profileDescriptionContainer, nameContainer, descriptionContainer, followContainer, followerContainer, followingContainer, buttonContainer, followButtonContainer, messageButtonContainer, profileBottomContainer, bottomButtonContainer, popupContainer, popupItemContainer } = style();
+    const { mainContainer, profileContainer, profileImageContainer, profileDescriptionContainer, nameContainer, descriptionContainer, followContainer, followerContainer, followingContainer, buttonContainer, followButtonContainer, messageButtonContainer, editPostContainer, profileBottomContainer, bottomButtonContainer, popupContainer, popupItemContainer } = style();
 
     const [showOption, setShowOption] = useState("posts");
 
@@ -81,24 +84,28 @@ const MyProfile = () => {
                         </div>
                     </div>
                 </div>
+
+                <div className={editPostContainer}>
+                    <EditPost
+                        postId={""}
+                    />
+                </div>
+            
                 <div className={profileBottomContainer}>
                     <button style={postsOptionColor}  className={bottomButtonContainer} onClick={onClickPosts}>Posts</button>
                     <button style={photosOptionColor} className={bottomButtonContainer} onClick={onClickPhotos}>Photos</button>
                 </div>
                 {showOption === "posts"? (
                     <div>
-                        <h1>Hi</h1>
-                        <h1>Hi</h1>
-                        <h1>Hi</h1>
-                        <h1>Hi</h1>
-                        <h1>Hi</h1>
-                        <h1>Hi</h1>
-                        <h1>Hi</h1>
-                        <h1>Hi</h1>
-                        <h1>Hi</h1>
-                        <h1>Hi</h1>
-                        <h1>Hi</h1>
-                    </div>) : null}
+                        {profileData.posts.map((post) => (
+                            <Post
+                                key={post._id}
+                                postId={post._id}
+                            />
+                        ))}
+                    </div>
+                    
+                ) : null}
             </div>
         </LayoutWrapper>
      );

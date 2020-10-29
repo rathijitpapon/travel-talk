@@ -10,6 +10,11 @@ const style = makeStyles((theme) => ({
     padding: "10px",
     backgroundColor: "#ddb396",
     borderRadius: "20px",
+
+    [theme.breakpoints.down(600)]: {
+      marginLeft: "3%",
+      marginRight: "3%",
+    },
   },
 
   profileContainer: {
@@ -103,6 +108,10 @@ const style = makeStyles((theme) => ({
     [theme.breakpoints.down(600)]: {
       fontSize: "25px",
     },
+
+    "&:hover": {
+      opacity: "0.25",
+    }
   },
 
   reactCountContainer: {
@@ -110,6 +119,7 @@ const style = makeStyles((theme) => ({
     fontSize: "30px",
     margin: "auto",
     textAlign: "center",
+    cursor: "pointer",
 
     [theme.breakpoints.down(600)]: {
       fontSize: "20px",
@@ -118,6 +128,30 @@ const style = makeStyles((theme) => ({
     [theme.breakpoints.down(200)]: {
       fontSize: "15px",
     },
+  },
+
+  popupContainer: {
+    display: "flex",
+    flexDirection: "column",
+    overflowY: "auto",
+    maxHeight: "calc(100vh - 210px)",
+  },
+
+  popupItemContainer: {
+    marginTop: "5px",
+    cursor: "pointer",
+    textDecoration: "none",
+    fontWeight: "bold",
+    fontSize: "18px",
+    fontFamily: "Lato",
+
+    [theme.breakpoints.down(200)]: {
+      fontSize: "16px",
+    },
+
+    "&:hover": {
+      backgroundColor: "lightblue",
+    }
   },
 }));
 

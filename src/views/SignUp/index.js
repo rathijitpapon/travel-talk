@@ -12,9 +12,9 @@ const SignUp = (props) => {
     const {mainContainer, titleContainer, navlinkContainer, fieldContainer, buttonDivContainer, buttonContainer, fieldTitleContainer, inputContainer, errorContainer} = style();
 
     const schema = {
-        fullName: Joi.string().required().label("fullName"),
-        username: Joi.string().required().min(5).label("username"),
-        emailAddress: Joi.string().required().email().label("emailAddress"),
+        fullName: Joi.string().trim().required().max(30).label("fullName"),
+        username: Joi.string().trim().required().min(5).label("username"),
+        emailAddress: Joi.string().trim().required().email().label("emailAddress"),
         password: Joi.string().required().min(6).label("password"),
         confirmPassword: Joi.string().required().min(6).label("confirmPassword"),
     };

@@ -133,6 +133,11 @@ const style = makeStyles((theme) => ({
     },
   },
 
+  editPostContainer: {
+    marginTop: "30px",
+    width: "100%",
+  },
+
   buttonContainer: {
     display: "flex",
     justifyContent: "flex-start",
@@ -197,6 +202,13 @@ const style = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     marginTop: "20px",
+    marginLeft: "5%",
+    marginRight: "5%",
+
+    [theme.breakpoints.down(600)]: {
+      marginLeft: "3%",
+      marginRight: "3%",
+    },
 
     [theme.breakpoints.down(280)]: {
       display: "flex",
@@ -205,7 +217,7 @@ const style = makeStyles((theme) => ({
   },
 
   bottomButtonContainer: {
-    width: "100%",
+    width: "49%",
     height: "30px",
     backgroundColor: "lightgray",
     cursor: "pointer",

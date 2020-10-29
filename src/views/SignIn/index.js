@@ -12,7 +12,7 @@ const SignIn = (props) => {
     const {mainContainer, titleContainer, navlinkContainer, fieldContainer, buttonDivContainer, buttonContainer, fieldTitleContainer, inputContainer, errorContainer} = style();
 
     const schema = {
-        username: Joi.string().required().label("username"),
+        username: Joi.string().trim().required().label("username"),
         password: Joi.string().required().label("password"),
     };
 
