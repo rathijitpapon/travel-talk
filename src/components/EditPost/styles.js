@@ -103,7 +103,7 @@ const style = makeStyles((theme) => ({
   },
 
   postImageContainer: {
-    maxHeight: "400px",
+    maxHeight: "60%",
     width: "100%",
     objectFit: "cover",
     objectPosition: "50% 50%",
