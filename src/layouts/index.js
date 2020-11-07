@@ -2,6 +2,7 @@ import React from "react";
 import {Switch, Route} from "react-router-dom";
 
 import Messages from "../views/Messages";
+import Inbox from "../views/Inbox";
 import Notifications from "../views/Notifications";
 import MyProfile from "../views/MyProfile";
 import SignIn from "../views/SignIn";
@@ -16,6 +17,7 @@ const MainLayout = () => {
     <div>
       <Switch>
         <Route exact path="/messages" component={Messages} />
+        <Route exact path="/inbox/:id" component={Inbox} />
         <Route exact path="/notifications" component={Notifications} />
         <Route exact path="/myprofile" component={MyProfile} />
         <Route exact path="/signin" component={SignIn} />

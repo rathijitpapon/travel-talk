@@ -1,5 +1,4 @@
 import React from 'react';
-import {NavLink} from "react-router-dom";
 
 import LayoutWrapper from "../../layouts/LayoutWrapper";
 
@@ -7,8 +6,10 @@ import style from "./styles";
 
 const profileData = require("../../assets/profileData.json");
 
-const Messages = () => {
+const Inbox = (props) => {
     const {mainContainer, nameDivContainer, personContainer, profileIconContainer, textContainer, profileNameContainer, messageContainer} = style();
+    
+    const inboxId = props.match.params.id;
 
     return ( 
         <LayoutWrapper>
@@ -17,19 +18,19 @@ const Messages = () => {
                     
                     <div className={nameDivContainer}>
                         {profileData.messages.map(message => (
-                            <NavLink exact to={"/inbox/" + message._id} className={personContainer} key={message._id}>
+                            <div className={personContainer} key={message._id}>
                                 <img src={message.profileImage} alt="" className={profileIconContainer} />
 
                                 <div className={textContainer}>
                                     <div className={profileNameContainer}>
-                                        {message.fullName}
+                                        {message.fullName + " " + inboxId}
                                     </div>
 
                                     <div className={messageContainer}>
                                         {message.message[0].received ? "" : "You: "}  {message.message[0].text}
                                     </div>
                                 </div>
-                            </NavLink>
+                            </div>
                         ))}
                     </div>
                     
@@ -38,4 +39,4 @@ const Messages = () => {
      );
 }
  
-export default Messages;
+export default Inbox;
