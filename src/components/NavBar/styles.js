@@ -87,6 +87,10 @@ const style = makeStyles((theme) => ({
         [theme.breakpoints.up(700)] : {
             padding: "0px 0px 0px 0px",
         },
+        
+        [theme.breakpoints.up(700)] : {
+            display: "none",
+        },
       },
 
       menuItemContainer: {
@@ -124,8 +128,8 @@ const style = makeStyles((theme) => ({
         color: "#EBE4E0",
         cursor: "pointer",
         textDecoration: "none",
-        marginTop: "6%",
-        marginBottom: "6%",
+        marginTop: "7%",
+        marginBottom: "7%",
         marginLeft: "30px",
 
         '&:hover': {

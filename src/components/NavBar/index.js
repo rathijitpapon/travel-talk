@@ -7,7 +7,7 @@ import AppIcon from "../../assets/logo/appIconSmall.png";
 const NavBar = () => {
   const { container, mainContainer, leftContainer, rightContainer, logoContainer, iconContainer, titleContainer, menuIconContainer, menuItemWrapper, menuItemContainer,  optionContainer, itemContainer } = style();
 
-  const isLoggedIn = false;
+  const isLoggedIn = true;
 
   const [mobileMenu, setMobileMenu] = useState(true);
 
@@ -34,9 +34,6 @@ const NavBar = () => {
                 <NavLink exact activeStyle={{color: "#bc8989"}} to="/messages" className={itemContainer}>
                   Messages
                 </NavLink>
-                <NavLink exact activeStyle={{color: "#bc8989"}} to="/notifications" className={itemContainer}>
-                  Notifications
-                </NavLink>
                 <NavLink exact activeStyle={{color: "#bc8989"}} to="/myprofile" className={itemContainer}>
                   Rathijit
                 </NavLink>
@@ -59,9 +56,6 @@ const NavBar = () => {
           {isLoggedIn ? (<React.Fragment>
             <div className={menuItemContainer}>
               <NavLink exact activeStyle={{color: "#bc8989"}} to="/messages"  className={menuItemContainer}>Messages</NavLink>
-            </div>
-            <div className={menuItemContainer}>
-              <NavLink exact activeStyle={{color: "#bc8989"}} to="/notifications"  className={menuItemContainer}>Notifications</NavLink>
             </div>
             <div className={menuItemContainer}>
               <NavLink exact activeStyle={{color: "#bc8989"}} to="myprofile"  className={menuItemContainer}>Rathijit</NavLink>
