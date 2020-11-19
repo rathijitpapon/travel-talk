@@ -51,7 +51,7 @@ const style = makeStyles((theme) => ({
         fontSize: "35px",
         fontWeight: "bold",
         color: "#EBE4E0",
-        marginTop: "6%",
+        marginTop: "7.3%",
 
         [theme.breakpoints.down(450)] : {
             fontSize: "35px",
