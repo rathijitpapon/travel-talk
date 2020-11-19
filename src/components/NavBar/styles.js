@@ -41,7 +41,7 @@ const style = makeStyles((theme) => ({
         marginTop: "1%",
         marginBottom: "1%",
         
-        [theme.breakpoints.down(430)] : {
+        [theme.breakpoints.down(400)] : {
             display: "none",
         },
       },
@@ -60,6 +60,11 @@ const style = makeStyles((theme) => ({
 
         [theme.breakpoints.down(430)] : {
           fontSize: "25px",
+          marginTop: "11%",
+        },
+
+        [theme.breakpoints.down(400)] : {
+          fontSize: "25px",
           marginTop: "18%",
         },
       },
@@ -75,7 +80,7 @@ const style = makeStyles((theme) => ({
             opacity: "0.3",
           },
 
-        [theme.breakpoints.up(700)] : {
+        [theme.breakpoints.up(800)] : {
             display: "none",
         },
       },
@@ -84,11 +89,11 @@ const style = makeStyles((theme) => ({
         display: "flex-inline",
         padding: "0px 0px 10px 0px",
 
-        [theme.breakpoints.up(700)] : {
+        [theme.breakpoints.up(800)] : {
             padding: "0px 0px 0px 0px",
         },
         
-        [theme.breakpoints.up(700)] : {
+        [theme.breakpoints.up(800)] : {
             display: "none",
         },
       },
@@ -107,7 +112,7 @@ const style = makeStyles((theme) => ({
             opacity: "0.5",
           },
 
-        [theme.breakpoints.up(700)] : {
+        [theme.breakpoints.up(800)] : {
             padding: "0px 0px 0px 0px",
         },
       },
@@ -116,7 +121,7 @@ const style = makeStyles((theme) => ({
         display: "flex",
         marginRight: "30px",
 
-        [theme.breakpoints.down(700)] : {
+        [theme.breakpoints.down(800)] : {
             display: "none",
         },
       },
