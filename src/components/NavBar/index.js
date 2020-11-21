@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from "react";
 import {NavLink} from "react-router-dom";
+import { toast } from 'react-toastify';
 
 import authService from "../../services/authService";
+import userService from "../../services/userService";
 
 import style from "./styles";
 import AppIcon from "../../assets/logo/appIconSmall.png";
@@ -10,23 +12,41 @@ const NavBar = () => {
   const { container, mainContainer, leftContainer, rightContainer, logoContainer, iconContainer, titleContainer, menuIconContainer, menuItemWrapper, menuItemContainer,  optionContainer, itemContainer } = style();
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  const [username, setUsername] = useState("");
   const [mobileMenu, setMobileMenu] = useState(true);
 
   const onMenuClick = () => {
     setMobileMenu(!mobileMenu);
   };
 
-  const onSignoutClick = () => {
-    console.log("Signed out");
+  const onSignoutClick = async () => {
+    const data = await userService.signout();
+    if(data.status < 400) {
+        setIsLoggedIn(false);
+        window.location = '/';
+    }
+    else {
+        toast.error(data.message, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    }
   }
 
   useEffect(() => {
-    function checkAuth() {
+    async function checkAuth() {
       if(!authService.getCurrentUser()) {
         setIsLoggedIn(false);
+        setUsername("");
       } else {
+        const data = await userService.getProfile("my");
         setIsLoggedIn(true);
+        setUsername(data.user.username);
       }
     }
     
@@ -52,8 +72,8 @@ const NavBar = () => {
                 <NavLink exact activeStyle={{color: "#bc8989"}} to="/messages" className={itemContainer}>
                   Messages
                 </NavLink>
-                <NavLink exact activeStyle={{color: "#bc8989"}} to="/myprofile" className={itemContainer}>
-                  Rathijit
+                <NavLink exact activeStyle={{color: "#bc8989"}} to={"/profile/" + username} className={itemContainer}>
+                {username ? username[0].toUpperCase() + username.slice(1) : username}
                 </NavLink>
                 <div className={itemContainer} onClick={onSignoutClick}>
                   Logout
@@ -79,7 +99,7 @@ const NavBar = () => {
               <NavLink exact activeStyle={{color: "#bc8989"}} to="/messages"  className={menuItemContainer}>Messages</NavLink>
             </div>
             <div className={menuItemContainer}>
-              <NavLink exact activeStyle={{color: "#bc8989"}} to="myprofile"  className={menuItemContainer}>Rathijit</NavLink>
+              <NavLink exact activeStyle={{color: "#bc8989"}} to={"/profile/" + username}  className={menuItemContainer}>{username ? username[0].toUpperCase() + username.slice(1) : username}</NavLink>
             </div>
             <div className={menuItemContainer} onClick={onSignoutClick}>
                   Logout

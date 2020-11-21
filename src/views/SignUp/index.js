@@ -5,6 +5,7 @@ import {NavLink} from "react-router-dom";
 import { toast } from 'react-toastify';
 
 import authService from "../../services/authService";
+import userService from "../../services/userService";
 
 import LayoutWrapper from "../../layouts/LayoutWrapper";
 import style from "./styles";
@@ -14,7 +15,7 @@ const SignUp = (props) => {
 
     const schema = {
         fullName: Joi.string().trim().required().max(30).label("fullName"),
-        username: Joi.string().trim().required().min(5).label("username"),
+        username: Joi.string().trim().required().min(5).max(10).label("username"),
         emailAddress: Joi.string().trim().required().email().label("emailAddress"),
         password: Joi.string().required().min(6).label("password"),
         confirmPassword: Joi.string().required().min(6).label("confirmPassword"),
@@ -104,7 +105,7 @@ const SignUp = (props) => {
         }
     };
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
         const obj = {
             fullName: fullName,
@@ -128,8 +129,21 @@ const SignUp = (props) => {
             });
         }
         else {
-            console.log(obj);
-            props.history.push("/");
+            const data = await userService.signup(obj);
+            if(data.status < 400) {
+                props.history.push("/");
+            }
+            else {
+                toast.error(data.message, {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+            }
         }
     };
 
