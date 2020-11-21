@@ -22,7 +22,7 @@ const Post = (props) => {
                 fullName: "Rathijit Paul",
                 title: "Himachal e Hattogol",
                 description: "This was an impressive tour in my life. First time I went outside of my country for tour. It was about 2 weeks journey. I travelled with my 15 other friends. We explored Shimla, Manali, Kasol, Delhi, Agra & Kolkata.",
-                postImage: "https://bityl.co/3vD4",
+                postImage: "https://bityl.co/4Vuu",
                 loveReact: [
                     {"_id": "012334567890", "fullName": "Rathijit Paul"},
                     {"_id": "012334567891", "fullName": "Rathijit Paul"},

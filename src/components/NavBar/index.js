@@ -1,5 +1,7 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {NavLink} from "react-router-dom";
+
+import authService from "../../services/authService";
 
 import style from "./styles";
 import AppIcon from "../../assets/logo/appIconSmall.png";
@@ -7,7 +9,7 @@ import AppIcon from "../../assets/logo/appIconSmall.png";
 const NavBar = () => {
   const { container, mainContainer, leftContainer, rightContainer, logoContainer, iconContainer, titleContainer, menuIconContainer, menuItemWrapper, menuItemContainer,  optionContainer, itemContainer } = style();
 
-  const isLoggedIn = true;
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const [mobileMenu, setMobileMenu] = useState(true);
 
@@ -19,13 +21,25 @@ const NavBar = () => {
     console.log("Signed out");
   }
 
+  useEffect(() => {
+    function checkAuth() {
+      if(!authService.getCurrentUser()) {
+        setIsLoggedIn(false);
+      } else {
+        setIsLoggedIn(true);
+      }
+    }
+    
+    checkAuth();
+  });
+
   return (
     <div className={container}>
       <div className={mainContainer}>
         <div className={leftContainer}>
           <NavLink exact activeStyle={{opacity: "0.5"}} to="/" className={logoContainer} >
             <img src={AppIcon} alt="Icon" className={iconContainer} />
-            <div className={titleContainer}>Travel Talk</div>
+            <div className={titleContainer} style={ window.innerWidth >800 && !isLoggedIn ? {marginTop: "5.6%"} : null} >Travel Talk</div>
           </NavLink>
         </div>
 
@@ -47,10 +61,10 @@ const NavBar = () => {
               </React.Fragment>) : null}
 
               {!isLoggedIn ? (<React.Fragment>
-                  <NavLink style={{marginTop: "12%"}} exact activeStyle={{color: "#bc8989"}} to="/signup" className={itemContainer}>
+                  <NavLink style={{marginTop: "11%"}} exact activeStyle={{color: "#bc8989"}} to="/signup" className={itemContainer}>
                     Join
                   </NavLink>
-                  <NavLink style={{marginTop: "12%"}} exact activeStyle={{color: "#bc8989"}} to="/signin" className={itemContainer}>
+                  <NavLink style={{marginTop: "11%"}} exact activeStyle={{color: "#bc8989"}} to="/signin" className={itemContainer}>
                     Login
                   </NavLink>
                 </React.Fragment>) : null}

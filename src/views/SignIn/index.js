@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import {withRouter} from 'react-router-dom';
+import {withRouter, Redirect} from 'react-router-dom';
 import Joi from "joi-browser";
 import {NavLink} from "react-router-dom";
 import { toast } from 'react-toastify';
 
+import authService from "../../services/authService";
 
 import LayoutWrapper from "../../layouts/LayoutWrapper";
 import style from "./styles";
@@ -83,6 +84,10 @@ const SignIn = (props) => {
             props.history.push("/");
         }
     };
+
+    if(authService.getCurrentUser()){
+        return <Redirect to="/" />;
+    }
 
     return ( 
         <LayoutWrapper>
