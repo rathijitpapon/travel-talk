@@ -1,141 +1,112 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import Popup from 'reactjs-popup';
 import {NavLink} from "react-router-dom";
 
 import style from "./styles";
 
 const Post = (props) => {
-    const {mainContainer, titleContainer, profileContainer, profileNameContainer, profileImageContainer, postImageContainer, postDescriptionContainer, reactContainer, reactItemContainer, reactCountContainer, reactIconContainer, popupContainer, popupItemContainer, popupProfileIconContainer, popupProfileNameContainer} = style();
+    const {mainContainer, titleContainer, profileContainer, profileInnerContainer, profileNameContainer, profileImageContainer, postImageContainer, postDescriptionContainer, reactContainer, reactItemContainer, reactCountContainer, reactIconContainer, popupContainer, popupItemContainer, popupProfileIconContainer, popupProfileNameContainer} = style();
 
-    const [postData, setPostData] = useState({});
-
+    const postData = props.post;
+    const profile = props.profile;
     
+    let isLoved = false;
+    let isliked = false;
+    let isDisliked = false;
 
+    const onLoveClicked = () => {
+        props.updatePostReact({
+            loveReact: !isLoved,
+            likeReact: false,
+            dislikeReact: false,
+        }, props.postIndex);
+    }
 
-    useEffect(() => {
+    const onlikeClicked = () => {
+        props.updatePostReact({
+            loveReact: false,
+            likeReact: !isliked,
+            dislikeReact: false,
+        }, props.postIndex);
+    }
 
-        function fetchPostData() {
-            console.log(props.postId);
-            
-            const fetchedPostData =  {
-                profileImage: "https://bityl.co/3vAx",
-                fullName: "Rathijit Paul",
-                title: "Himachal e Hattogol",
-                description: "This was an impressive tour in my life. First time I went outside of my country for tour. It was about 2 weeks journey. I travelled with my 15 other friends. We explored Shimla, Manali, Kasol, Delhi, Agra & Kolkata.",
-                postImage: "https://bityl.co/4Vuu",
-                loveReact: [
-                    {"_id": "012334567890", "fullName": "Rathijit Paul"},
-                    {"_id": "012334567891", "fullName": "Rathijit Paul"},
-                    {"_id": "012334567892", "fullName": "Rathijit Paul"},
-                    {"_id": "012334567893", "fullName": "Rathijit Paul"},
-                    {"_id": "012334567894", "fullName": "Rathijit Paul"},
-                    {"_id": "012334567895", "fullName": "Rathijit Paul"},
-                    {"_id": "012334567896", "fullName": "Rathijit Paul"},
-                    {"_id": "012334567897", "fullName": "Rathijit Paul"},
-                    {"_id": "012334567898", "fullName": "Rathijit Paul"},
-                ],
-                likeReact: [
-                    {"_id": "012334567890", "fullName": "Rathijit Paul"},
-                    {"_id": "012334567891", "fullName": "Rathijit Paul"},
-                    {"_id": "012334567892", "fullName": "Rathijit Paul"},
-                    {"_id": "012334567893", "fullName": "Rathijit Paul"},
-                    {"_id": "012334567894", "fullName": "Rathijit Paul"},
-                    {"_id": "012334567895", "fullName": "Rathijit Paul"},
-                ],
-                disLikeReact: [
-                    {"_id": "012334567890", "fullName": "Rathijit Paul"},
-                    {"_id": "012334567891", "fullName": "Rathijit Paul"},
-                    {"_id": "012334567892", "fullName": "Rathijit Paul"},
-                ],
-            }
-    
-            // const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
-            // res.json()
-            //     .then(res => setPostData(fetchedPostData))
-            //     .catch(res => setPostData(fetchedPostData));
+    const onDislikeClicked = () => {
+        props.updatePostReact({
+            loveReact: false,
+            likeReact: false,
+            dislikeReact: !isDisliked,
+        }, props.postIndex);
+    }
 
-            setPostData(fetchedPostData)
-        };
+    const onEditPost = () => {
+        props.editPost(props.posIndex);
+    }
 
-        fetchPostData();
-        
-    }, [props.postId]);
+    const onDeletePost = () => {
+        props.deletePost(props.postIndex);
+    }
 
-    const onClickLove = () => {
-        console.log("Love Reacted!");
-        
-        const newReactList = postData.loveReact;
-        const newId = parseInt(postData.loveReact[postData.loveReact.length - 1]._id) + 1;
-        newReactList.push({"_id": newId.toString(), "fullName": "Rathijit Paul"});
+    for (let i = 0; i < postData.loveReact.length; i++) {
+        if(postData.loveReact[i].reactId.username === profile.username) {
+            isLoved = true;
+        }
+    }
 
-        setPostData({
-            profileImage: postData.profileImage,
-            fullName: postData.fullName,
-            title: postData.title,
-            description: postData.description,
-            postImage: postData.postImage,
-            loveReact: newReactList,
-            likeReact: postData.likeReact,
-            disLikeReact: postData.disLikeReact,
-        });
-    };
+    for (let i = 0; i < postData.likeReact.length; i++) {
+        if(postData.likeReact[i].reactId.username === profile.username) {
+            isliked = true;
+        }
+    }
 
-    const onClickLike = () => {
-        console.log("Like Reacted!");
-        const newReactList = postData.likeReact;
-        const newId = parseInt(postData.likeReact[postData.likeReact.length - 1]._id) + 1;
-        newReactList.push({"_id": newId.toString(), "fullName": "Rathijit Paul"});
-
-        setPostData({
-            profileImage: postData.profileImage,
-            fullName: postData.fullName,
-            title: postData.title,
-            description: postData.description,
-            postImage: postData.postImage,
-            loveReact: postData.loveReact,
-            likeReact: newReactList,
-            disLikeReact: postData.disLikeReact,
-        });
-    };
-
-    const onClickDisLike = () => {
-        console.log("DisLike Reacted!");
-        const newReactList = postData.disLikeReact;
-        const newId = parseInt(postData.disLikeReact[postData.disLikeReact.length - 1]._id) + 1;
-        newReactList.push({"_id": newId.toString(), "fullName": "Rathijit Paul"});
-
-        setPostData({
-            profileImage: postData.profileImage,
-            fullName: postData.fullName,
-            title: postData.title,
-            description: postData.description,
-            postImage: postData.postImage,
-            loveReact: postData.loveReact,
-            likeReact: postData.likeReact,
-            disLikeReact: newReactList,
-        });
-    };
+    for (let i = 0; i < postData.dislikeReact.length; i++) {
+        if(postData.dislikeReact[i].reactId.username === profile.username) {
+            isDisliked = true;
+        }
+    }
 
     return ( 
         <div className={mainContainer}>
 
             <div className={profileContainer}>
-                <NavLink exact to="/myprofile">
-                    <img src={postData.profileImage} alt="Profile" className={profileImageContainer}/>
-                </NavLink>
+                <div className={profileInnerContainer}>
+                    <NavLink exact to={"/profile/" + postData.ownerId.username}>
+                        <img src={postData.ownerId.profileImage ? ("data:image/jpg;base64," + postData.ownerId.profileImage) : ""} alt="" className={profileImageContainer}/>
+                    </NavLink>
+                    <NavLink exact to={"/profile/" + postData.ownerId.username} className={profileNameContainer}>
+                    {postData.ownerId.fullname}
+                    </NavLink>
+                </div>
                 
-                <NavLink exact to="/myprofile" className={profileNameContainer}>
-                {postData.fullName}
-                </NavLink>
+                {profile.username === postData.ownerId.username ?
+                    (<div className={profileInnerContainer} >
+                        <i className="fas fa-edit fa-2x" style={{
+                            marginRight: "10px",
+                            cursor: "pointer",
+
+                            "&:hover": {
+                                opacity: "0.1",
+                            }
+                        }} onClick={onEditPost}></i>
+                        <i className="fas fa-trash fa-2x" style={{
+                            marginRight: "5px",
+                            cursor: "pointer",
+
+                            "&:hover": {
+                                opacity: "0.1",
+                            }
+                        }} onClick={onDeletePost}></i>
+                    </div>) : null
+                }
+                
             </div>
 
             <div className={titleContainer}>{postData.title}</div>
             <div className={postDescriptionContainer}>{postData.description}</div>
-            <img src={postData.postImage} alt="" className={postImageContainer}/>
+            <img src={postData.postImage ? ("data:image/jpg;base64," + postData.postImage) : ""} alt="" className={postImageContainer}/>
 
             <div className={reactContainer}>
-                <div className={reactItemContainer}>
-                    <div className={reactIconContainer} onClick={onClickLove}>
+                <div className={reactItemContainer} style={isLoved ? {backgroundColor: "#8b5e93"} : null}>
+                    <div className={reactIconContainer} onClick={onLoveClicked}>
                         <i className="fas fa-heart"></i>
                     </div>
                     <Popup
@@ -146,12 +117,12 @@ const Post = (props) => {
                         {postData.loveReact ? postData.loveReact.map(react => (
                                 <div key={react._id} className={popupItemContainer}>
 
-                                    <NavLink exact to="/myprofile">
-                                        <img src={postData.profileImage} alt="Profile" className={popupProfileIconContainer}/>
+                                    <NavLink exact to={"/profile/" + react.reactId.username}>
+                                        <img src={react.reactId.profileImage ?( "data:image/jpg;base64," + react.reactId.profileImage) : ""} alt="" className={popupProfileIconContainer}/>
                                     </NavLink>
 
-                                    <NavLink to="/myprofile" className={popupProfileNameContainer}>
-                                        {react.fullName}
+                                    <NavLink to={"/profile/" + react.reactId.username} className={popupProfileNameContainer}>
+                                        {react.reactId.fullname}
                                     </NavLink>
 
                                 </div>
@@ -160,8 +131,8 @@ const Post = (props) => {
                     </Popup>
                 </div>
 
-                <div className={reactItemContainer}>
-                    <div className={reactIconContainer} onClick={onClickLike}>
+                <div className={reactItemContainer} style={isliked ? {backgroundColor: "#8b5e93"} : null}>
+                    <div className={reactIconContainer} onClick={onlikeClicked}>
                         <i className="far fa-thumbs-up"></i>
                     </div>
                     <Popup
@@ -172,12 +143,12 @@ const Post = (props) => {
                         {postData.likeReact ? postData.likeReact.map(react => (
                                 <div key={react._id} className={popupItemContainer}>
 
-                                    <NavLink exact to="/myprofile">
-                                        <img src={postData.profileImage} alt="Profile" className={popupProfileIconContainer}/>
+                                    <NavLink exact to={"/profile/" + react.reactId.username}>
+                                        <img src={react.reactId.profileImage ? ("data:image/jpg;base64," + react.reactId.profileImage) : ""} alt="" className={popupProfileIconContainer}/>
                                     </NavLink>
 
-                                    <NavLink to="/myprofile" className={popupProfileNameContainer}>
-                                        {react.fullName}
+                                    <NavLink to={"/profile/" + react.reactId.username} className={popupProfileNameContainer}>
+                                        {react.reactId.fullname}
                                     </NavLink>
 
                                 </div>
@@ -186,24 +157,24 @@ const Post = (props) => {
                     </Popup>
                 </div>
 
-                <div className={reactItemContainer}>
-                    <div className={reactIconContainer} onClick={onClickDisLike}>
+                <div className={reactItemContainer} style={isDisliked ? {backgroundColor: "#8b5e93"} : null}>
+                    <div className={reactIconContainer} onClick={onDislikeClicked}>
                         <i className="far fa-thumbs-down"></i>
                     </div>
                     <Popup
-                        trigger={<div className={reactCountContainer}>{postData.disLikeReact ? postData.disLikeReact.length : 0}</div>}
+                        trigger={<div className={reactCountContainer}>{postData.dislikeReact ? postData.dislikeReact.length : 0}</div>}
                         modal
                     >
                         <div className={popupContainer}>
-                            {postData.disLikeReact ? postData.disLikeReact.map(react => (
+                            {postData.dislikeReact ? postData.dislikeReact.map(react => (
                                 <div key={react._id} className={popupItemContainer}>
 
-                                    <NavLink exact to="/myprofile">
-                                        <img src={postData.profileImage} alt="Profile" className={popupProfileIconContainer}/>
+                                    <NavLink exact to={"/profile/" + react.reactId.username}>
+                                        <img src={react.reactId.profileImage ? ("data:image/jpg;base64," + react.reactId.profileImage) : ""} alt="" className={popupProfileIconContainer}/>
                                     </NavLink>
 
-                                    <NavLink to="/myprofile" className={popupProfileNameContainer}>
-                                        {react.fullName}
+                                    <NavLink to={"/profile/" + react.reactId.username} className={popupProfileNameContainer}>
+                                        {react.reactId.fullname}
                                     </NavLink>
 
                                 </div>

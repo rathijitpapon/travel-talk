@@ -19,6 +19,11 @@ const style = makeStyles((theme) => ({
 
   profileContainer: {
     display: "flex",
+    justifyContent: "space-between",
+  },
+
+  profileInnerContainer: {
+    display: "flex",
   },
 
   profileImageContainer: {

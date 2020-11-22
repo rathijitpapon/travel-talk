@@ -22,7 +22,7 @@ const setJWT = (jwt) => {
 }
 
 const httpService = {
-    get: axios.get,
+    get: axios.put,
     post: axios.post,
     patch: axios.patch,
     delete: axios.delete,
