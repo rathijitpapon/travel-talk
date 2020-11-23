@@ -1,6 +1,5 @@
 import httpService from "./httpService";
 import authService from "./authService";
-const fs = require('fs');
 
 const postAPIEndpoint = "posts";
 
@@ -142,18 +141,10 @@ const deletePost = (postId) => {
 const updatePostImage = (postId, image) => {
     const url = `${process.env.REACT_APP_API_BASE_URL}/${postAPIEndpoint}/image/${postId}`;
 
-    const data = new FormData();
-    data.append('postImage', fs.createReadStream(image));
-
-    const config = {
-        headers: { 
-            ...data.getHeaders(),
-        },
-        data : data,
-    };
-
     httpService.setJWT(authService.getJWT());
-    const response = httpService.patch(url, config).then(res => {
+    const response = httpService.patch(url, {
+        postImage: image,
+    }).then(res => {
         return {
             status: res.status,
             postImage: res.data.postImage,

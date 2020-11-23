@@ -1,6 +1,5 @@
 import httpService from "./httpService";
 import authService from "./authService";
-const fs = require('fs');
 
 const userAPIEndpoint = "users";
 
@@ -219,18 +218,10 @@ const getEmail = () => {
 const updateProfileImage = (image) => {
     const url = `${process.env.REACT_APP_API_BASE_URL}/${userAPIEndpoint}/image`;
 
-    const data = new FormData();
-    data.append('profileImage', fs.createReadStream(image));
-
-    const config = {
-        headers: { 
-            ...data.getHeaders(),
-        },
-        data : data,
-    };
-
     httpService.setJWT(authService.getJWT());
-    const response = httpService.patch(url, config).then(res => {
+    const response = httpService.patch(url, {
+        profileImage: image,
+    }).then(res => {
         return {
             status: res.status,
             profileImage: res.data.profileImage,

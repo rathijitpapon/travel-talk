@@ -8,7 +8,7 @@ const Post = (props) => {
     const {mainContainer, titleContainer, profileContainer, profileInnerContainer, profileNameContainer, profileImageContainer, postImageContainer, postDescriptionContainer, reactContainer, reactItemContainer, reactCountContainer, reactIconContainer, popupContainer, popupItemContainer, popupProfileIconContainer, popupProfileNameContainer} = style();
 
     const postData = props.post;
-    const profile = props.profile;
+    const myProfile = props.myProfile;
     
     let isLoved = false;
     let isliked = false;
@@ -39,7 +39,7 @@ const Post = (props) => {
     }
 
     const onEditPost = () => {
-        props.editPost(props.posIndex);
+        props.editPost(props.postIndex);
     }
 
     const onDeletePost = () => {
@@ -47,19 +47,19 @@ const Post = (props) => {
     }
 
     for (let i = 0; i < postData.loveReact.length; i++) {
-        if(postData.loveReact[i].reactId.username === profile.username) {
+        if(postData.loveReact[i].reactId.username === myProfile.username) {
             isLoved = true;
         }
     }
 
     for (let i = 0; i < postData.likeReact.length; i++) {
-        if(postData.likeReact[i].reactId.username === profile.username) {
+        if(postData.likeReact[i].reactId.username === myProfile.username) {
             isliked = true;
         }
     }
 
     for (let i = 0; i < postData.dislikeReact.length; i++) {
-        if(postData.dislikeReact[i].reactId.username === profile.username) {
+        if(postData.dislikeReact[i].reactId.username === myProfile.username) {
             isDisliked = true;
         }
     }
@@ -70,14 +70,14 @@ const Post = (props) => {
             <div className={profileContainer}>
                 <div className={profileInnerContainer}>
                     <NavLink exact to={"/profile/" + postData.ownerId.username}>
-                        <img src={postData.ownerId.profileImage ? ("data:image/jpg;base64," + postData.ownerId.profileImage) : ""} alt="" className={profileImageContainer}/>
+                        <img src={postData.ownerId.profileImage ? ( postData.ownerId.profileImage) : ""} alt="" className={profileImageContainer}/>
                     </NavLink>
                     <NavLink exact to={"/profile/" + postData.ownerId.username} className={profileNameContainer}>
                     {postData.ownerId.fullname}
                     </NavLink>
                 </div>
                 
-                {profile.username === postData.ownerId.username ?
+                {myProfile.username === postData.ownerId.username ?
                     (<div className={profileInnerContainer} >
                         <i className="fas fa-edit fa-2x" style={{
                             marginRight: "10px",
@@ -102,7 +102,7 @@ const Post = (props) => {
 
             <div className={titleContainer}>{postData.title}</div>
             <div className={postDescriptionContainer}>{postData.description}</div>
-            <img src={postData.postImage ? ("data:image/jpg;base64," + postData.postImage) : ""} alt="" className={postImageContainer}/>
+            <img src={postData.postImage ? (postData.postImage) : ""} alt="" className={postImageContainer}/>
 
             <div className={reactContainer}>
                 <div className={reactItemContainer} style={isLoved ? {backgroundColor: "#8b5e93"} : null}>
@@ -118,7 +118,7 @@ const Post = (props) => {
                                 <div key={react._id} className={popupItemContainer}>
 
                                     <NavLink exact to={"/profile/" + react.reactId.username}>
-                                        <img src={react.reactId.profileImage ?( "data:image/jpg;base64," + react.reactId.profileImage) : ""} alt="" className={popupProfileIconContainer}/>
+                                        <img src={react.reactId.profileImage ?(  react.reactId.profileImage) : ""} alt="" className={popupProfileIconContainer}/>
                                     </NavLink>
 
                                     <NavLink to={"/profile/" + react.reactId.username} className={popupProfileNameContainer}>
@@ -144,7 +144,7 @@ const Post = (props) => {
                                 <div key={react._id} className={popupItemContainer}>
 
                                     <NavLink exact to={"/profile/" + react.reactId.username}>
-                                        <img src={react.reactId.profileImage ? ("data:image/jpg;base64," + react.reactId.profileImage) : ""} alt="" className={popupProfileIconContainer}/>
+                                        <img src={react.reactId.profileImage ? ( react.reactId.profileImage) : ""} alt="" className={popupProfileIconContainer}/>
                                     </NavLink>
 
                                     <NavLink to={"/profile/" + react.reactId.username} className={popupProfileNameContainer}>
@@ -170,7 +170,7 @@ const Post = (props) => {
                                 <div key={react._id} className={popupItemContainer}>
 
                                     <NavLink exact to={"/profile/" + react.reactId.username}>
-                                        <img src={react.reactId.profileImage ? ("data:image/jpg;base64," + react.reactId.profileImage) : ""} alt="" className={popupProfileIconContainer}/>
+                                        <img src={react.reactId.profileImage ? ( react.reactId.profileImage) : ""} alt="" className={popupProfileIconContainer}/>
                                     </NavLink>
 
                                     <NavLink to={"/profile/" + react.reactId.username} className={popupProfileNameContainer}>

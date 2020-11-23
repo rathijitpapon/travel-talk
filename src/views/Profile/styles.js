@@ -264,6 +264,7 @@ const style = makeStyles((theme) => ({
 
   photosItemContainer: {
     width: "32%",
+    height: "500px",
     borderRadius: "10px",
     marginLeft: "1%",
     marginBottom: "15px",

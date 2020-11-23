@@ -5,7 +5,7 @@ import ProtectedRoute from "./protectedRoute";
 
 import Messages from "../views/Messages";
 import Inbox from "../views/Inbox";
-import MyProfile from "../views/MyProfile";
+import Profile from "../views/Profile";
 import SignIn from "../views/SignIn";
 import SignUp from "../views/SignUp";
 import EditProfile from "../views/EditProfile";
@@ -23,8 +23,8 @@ const MainLayout = () => {
 
         <ProtectedRoute exact path="/messages" component={Messages} ></ProtectedRoute>
         <ProtectedRoute exact path="/inbox/:id" component={Inbox} ></ProtectedRoute>
-        <ProtectedRoute exact path="/profile/:id" component={MyProfile} ></ProtectedRoute>
-        <ProtectedRoute exact path="/editprofile" component={EditProfile} ></ProtectedRoute>
+        <ProtectedRoute exact path="/profile/:id" component={Profile} ></ProtectedRoute>
+        <ProtectedRoute exact path="/edit/profile" component={EditProfile} ></ProtectedRoute>
         <ProtectedRoute exact path="/" component={Home} ></ProtectedRoute>
         <Route path="*" component={NotFound} />
       </Switch>

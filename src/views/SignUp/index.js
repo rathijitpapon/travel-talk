@@ -10,6 +10,8 @@ import userService from "../../services/userService";
 import LayoutWrapper from "../../layouts/LayoutWrapper";
 import style from "./styles";
 
+const defaultProfileImage = require("../../assets/defaultProfileImage.json");
+
 const SignUp = (props) => {
     const {mainContainer, titleContainer, navlinkContainer, fieldContainer, buttonDivContainer, buttonContainer, fieldTitleContainer, inputContainer, errorContainer} = style();
 
@@ -131,7 +133,10 @@ const SignUp = (props) => {
         else {
             const data = await userService.signup(obj);
             if(data.status < 400) {
-                props.history.push("/");
+                const imageData = await userService.updateProfileImage(defaultProfileImage.profileImage)
+                if(imageData.status < 400) {
+                    props.history.push("/");
+                }
             }
             else {
                 toast.error(data.message, {
