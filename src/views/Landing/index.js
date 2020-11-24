@@ -18,7 +18,7 @@ const Landing = () => {
                 </div>
                 <div>
                     <p className={descriptionContainer}>
-                        Travel talk is a open platform to talk about travel.
+                        Travel talk is an open platform to talk about travel.
                     </p>
                     <p className={descriptionContainer}>
                         Share your travel experience with others. Ask any help for your next travel by sharing your travel plan.
