@@ -1,57 +1,21 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import {NavLink} from "react-router-dom";
-import { toast } from 'react-toastify';
-
-import authService from "../../services/authService";
-import userService from "../../services/userService";
 
 import style from "./styles";
 import AppIcon from "../../assets/logo/appIconSmall.png";
 
-const NavBar = () => {
+const NavBar = (props) => {
   const { container, mainContainer, leftContainer, rightContainer, logoContainer, iconContainer, titleContainer, menuIconContainer, menuItemWrapper, menuItemContainer,  optionContainer, itemContainer } = style();
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState("");
   const [mobileMenu, setMobileMenu] = useState(true);
 
   const onMenuClick = () => {
     setMobileMenu(!mobileMenu);
   };
 
-  const onSignoutClick = async () => {
-    const data = await userService.signout();
-    if(data.status < 400) {
-        setIsLoggedIn(false);
-        window.location = '/';
-    }
-    else {
-        toast.error(data.message, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-        });
-    }
-  }
-
-  useEffect(() => {
-    async function checkAuth() {
-      if(!authService.getCurrentUser()) {
-        setIsLoggedIn(false);
-        setUsername("");
-      } else {
-        const data = await userService.getProfile("my");
-        setIsLoggedIn(true);
-        setUsername(data.user.username);
-      }
-    }
-    
-    checkAuth();
-  });
+  const onSignoutClick = props.onSignoutClick;
+  const username = props.profile.username;
+  const isLoggedIn = ((username !== "") ? true : false);
 
   return (
     <div className={container}>
