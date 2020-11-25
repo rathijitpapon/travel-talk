@@ -19,7 +19,7 @@ const Home = () => {
     const limit = 10;
 
     const fetchData = (caller) =>{
-        if(caller && skip > 0){
+        if(caller && profile){
             return;
         }
 

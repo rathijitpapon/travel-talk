@@ -84,7 +84,7 @@ const Profile = (props) => {
     }
 
     const fetchData = (caller) =>{
-        if(caller && skip > 0){
+        if(caller && profile && myProfile){
             return;
         }
 
